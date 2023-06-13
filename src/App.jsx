@@ -22,7 +22,9 @@ function App() {
   };
 
   const handleSelect = (id) => {
-    console.log(id);
+    const found = rollHistory.find((roll) => roll.id === id);
+    found.isSelected = !found.isSelected;
+    setRollHistory(structuredClone(rollHistory));
   };
 
   return (

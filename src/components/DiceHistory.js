@@ -7,7 +7,8 @@ function DiceHistory({ rollList, onSelect }) {
     <ul>
       {rollList.map((roll) => (
         <li key={roll.id}>
-          {roll.roll} <button onClick={() => onSelect(roll.id)}>Select</button>
+          {roll.isSelected ? <strong>{roll.roll}</strong> : roll.roll}
+          <button onClick={() => onSelect(roll.id)}>Select</button>
         </li>
       ))}
     </ul>
