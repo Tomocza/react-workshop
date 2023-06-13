@@ -27,11 +27,16 @@ function App() {
     setRollHistory(structuredClone(rollHistory));
   };
 
+  const handleDelete = (id) => {
+    const filtered = rollHistory.filter((roll) => roll.id !== id);
+    setRollHistory(filtered);
+  };
+
   return (
     <>
       <DiceRoller onRoll={handleRoll} />
       <Dice roll={currentRoll} />
-      <DiceHistory rollList={rollHistory} onSelect={handleSelect} />
+      <DiceHistory rollList={rollHistory} onSelect={handleSelect} onDelete={handleDelete} />
     </>
   );
 }

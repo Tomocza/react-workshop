@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DiceHistory({ rollList, onSelect }) {
+function DiceHistory({ rollList, onSelect, onDelete }) {
   return rollList.length === 0 ? (
     <p>No dice rolls yet.</p>
   ) : (
@@ -9,6 +9,7 @@ function DiceHistory({ rollList, onSelect }) {
         <li key={roll.id}>
           {roll.isSelected ? <strong>{roll.roll}</strong> : roll.roll}
           <button onClick={() => onSelect(roll.id)}>Select</button>
+          <button onClick={() => onDelete(roll.id)}>Delete</button>
         </li>
       ))}
     </ul>
