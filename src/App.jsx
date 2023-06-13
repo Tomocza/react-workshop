@@ -21,11 +21,15 @@ function App() {
     setRollHistory(rollHistory);
   };
 
+  const handleSelect = (id) => {
+    console.log(id);
+  };
+
   return (
     <>
-      <Dice roll={currentRoll} />
       <DiceRoller onRoll={handleRoll} />
-      <DiceHistory rollList={rollHistory} />
+      <Dice roll={currentRoll} />
+      <DiceHistory rollList={rollHistory} onSelect={handleSelect} />
     </>
   );
 }
