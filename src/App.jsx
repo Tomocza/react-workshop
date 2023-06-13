@@ -1,20 +1,31 @@
 // use nextId() to generate a new unique ID when needed
 import nextId from './generateId';
+import { useState } from 'react';
 import Dice from './components/Dice';
 import DiceRoller from './components/DiceRoller';
-import { useState } from 'react';
+import DiceHistory from './components/DiceHistory';
 
 function App() {
-  const [currentRoll, setCurrentRoll] = useState(-1);
+  const [currentRoll, setCurrentRoll] = useState({});
+  const [rollHistory, setRollHistory] = useState([]);
 
   const handleRoll = (num) => {
-    setCurrentRoll(num);
+    const newRoll = {
+      roll: num,
+      isSelected: false,
+      id: nextId(),
+    };
+
+    setCurrentRoll(newRoll);
+    rollHistory.push(newRoll);
+    setRollHistory(rollHistory);
   };
 
   return (
     <>
-      <Dice num={currentRoll} />
+      <Dice roll={currentRoll} />
       <DiceRoller onRoll={handleRoll} />
+      <DiceHistory rollList={rollHistory} />
     </>
   );
 }
