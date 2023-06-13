@@ -5,15 +5,15 @@ import DiceRoller from './components/DiceRoller';
 import { useState } from 'react';
 
 function App() {
-  const [currentNumber, setCurrentNumber] = useState(-1);
+  const [currentRoll, setCurrentRoll] = useState(-1);
 
   const handleRoll = (num) => {
-    setCurrentNumber(num);
+    setCurrentRoll(num);
   };
 
   return (
     <>
-      <Dice num={currentNumber} />
+      <Dice num={currentRoll} />
       <DiceRoller onRoll={handleRoll} />
     </>
   );
